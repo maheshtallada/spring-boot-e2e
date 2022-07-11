@@ -1,0 +1,13 @@
+Steps to move local repo to remote repository
+
+https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github
+
+1. in local folder -- > "git init" OR "git init -b main"
+2. create a repo in github
+3. in local -- > "git add ." && "git commit -m "initial commit""
+4. 	$ git remote add origin  <REMOTE_URL> 
+		# Sets the new remote
+	$ git remote -v
+		# Verifies the new remote URL
+5. 	$ git push origin main
+		# Pushes the changes in your local repository up to the remote repository you specified as the origin
