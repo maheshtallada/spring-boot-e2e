@@ -1,15 +1,20 @@
 package com.learning.springboot.springboote2e;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
 	
-	@RequestMapping(method = RequestMethod.GET, path = "/welcome")
+	@GetMapping(path = "/welcome")
 	public String sendGreeting() {
 		return "Hello-World";
+		
+	}
+	
+	@GetMapping(path = "/welcome-bean")
+	public WelcomeBean sendGreetingBean() {
+		return new WelcomeBean("Hello World bean");
 		
 	}
 }
