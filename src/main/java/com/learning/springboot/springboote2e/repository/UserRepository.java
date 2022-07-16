@@ -2,6 +2,7 @@ package com.learning.springboot.springboote2e.repository;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -36,6 +37,20 @@ public class UserRepository {
 		for (User user : users) {
 			if (user.getId() == id)
 				return user;
+		}
+		return null;
+	}
+
+	public User deleteById (int id) {
+		// Alt + Shift + L -- to assign the result to a local variable
+		Iterator<User> iterator = users.iterator();
+
+		while(iterator.hasNext()) {
+			User user = iterator.next();
+			if (user.getId() == id) {
+				iterator.remove();
+				return user;
+			}
 		}
 		return null;
 	}
