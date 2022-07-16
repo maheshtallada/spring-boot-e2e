@@ -1,8 +1,10 @@
-package com.learning.springboot.springboote2e;
+package com.learning.springboot.springboote2e.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.learning.springboot.springboote2e.model.WelcomeBean;
 
 @RestController
 public class Controller {

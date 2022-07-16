@@ -1,0 +1,2 @@
+Various forms of using ResponseEntity : https://www.baeldung.com/spring-response-entity
+2 Examples in UserController

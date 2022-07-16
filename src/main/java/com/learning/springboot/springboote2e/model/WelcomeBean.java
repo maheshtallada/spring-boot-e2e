@@ -1,4 +1,4 @@
-package com.learning.springboot.springboote2e;
+package com.learning.springboot.springboote2e.model;
 
 import lombok.Getter;
 import lombok.Setter;
