@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,8 +59,18 @@ public class UserController {
 				.toUri();
 		
 		//URI hardcodedURI = URI.create("http://localhost:8080/user/user/" + savedUser.getId());
+
+		// In this way, automatically the header key is set as Location and the value as
+		// parameter of created method, uri here
+
 		//return ResponseEntity.created(uri).build();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Location", uri.toString());
 		
-		return new ResponseEntity<>(uri, HttpStatus.CREATED);
+		// if only 2 parameters are passed, the first is considered as Body and second
+		// as status, hence passing body as empty in this case
+		return new ResponseEntity<>(null, headers, HttpStatus.CREATED);
+
 	}
 }
