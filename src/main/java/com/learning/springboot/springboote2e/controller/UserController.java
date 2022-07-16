@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.learning.springboot.springboote2e.customException.UserNotFoundException;
 import com.learning.springboot.springboote2e.model.User;
 import com.learning.springboot.springboote2e.repository.UserRepository;
 
@@ -38,7 +39,12 @@ public class UserController {
 	
 	@GetMapping(path = "/user/{userId}")
 	public User retriveById(@PathVariable(name = "userId") int id) {
-		return userRepository.findOne(id);
+
+		User user  = userRepository.findOne(id);
+
+		if (user == null)
+			throw new UserNotFoundException("id :: "+ id);
+		return user;
 	}
 	
 	
