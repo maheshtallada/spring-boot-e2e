@@ -1,2 +1,18 @@
 Various forms of using ResponseEntity : https://www.baeldung.com/spring-response-entity
 2 Examples in UserController
+
+
+TO find classes from Jars where we do not know the exact name of the class : https://www.baeldung.com/eclipse-find-class
+Ex: Ctrl+shift+T to get "Open Type" dialog
+
+
+Alt + Shift + L -- to assign the result to a local variable
+Ex: 1. we can type the following "users.iterator();"
+	2. we have to hold "Alt + Shift + L" and in pop-up, can type the name of the variable if needed or can leave to the default
+	3. the result is the below
+Iterator<User> iterator = users.iterator();
+
+
+Ctrl+Shift+O	-- organize imports
+Ctrl+O 			-- search for a method in the class
+Ctrl+Shift+F	-- Format the Code

@@ -3,6 +3,8 @@ package com.learning.springboot.springboote2e.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -54,7 +56,7 @@ public class UserController {
 	 * uri of created user -- with value of 'uri' variable
 	 */	
 	@PostMapping("/user")
-	public ResponseEntity<Object> createUser(@RequestBody User user) {
+	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
 		User savedUser = userRepository.save(user);
 		
 		// ex. for builder patter
