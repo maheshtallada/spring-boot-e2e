@@ -6,6 +6,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,13 +44,20 @@ public class UserController {
 	}
 	
 	@GetMapping(path = "/user/{userId}")
-	public User retriveById(@PathVariable(name = "userId") int id) {
+	public EntityModel<User> retriveById(@PathVariable(name = "userId") int id) {
 
 		User user  = userRepository.findOne(id);
-
 		if (user == null)
 			throw new UserNotFoundException("id :: "+ id);
-		return user;
+
+		// hateoas code start
+		EntityModel<User> model = EntityModel.of(user);
+		WebMvcLinkBuilder linkToUsers =
+				linkTo(methodOn(this.getClass()).retriveAllUsers());
+		model.add(linkToUsers.withRel("all-users"));
+		// hateoas code end
+
+		return model;
 	}
 	
 	
