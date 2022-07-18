@@ -12,8 +12,19 @@ Ex: 1. we can type the following "users.iterator();"
 	3. the result is the below
 Iterator<User> iterator = users.iterator();
 
+
 Internationalization is also called i18n (because of the number of letters, 18, between “i” and “n”)
+
 
 Ctrl+Shift+O	-- organize imports
 Ctrl+O 			-- search for a method in the class
 Ctrl+Shift+F	-- Format the Code
+
+
+Edit the commit message :: (tried and succeeded but before push, can explore after push)
+git commit --amend      --then enter
+when the edit screen pops up, click on insert key and then edit the commit message
+click on 'esc' key and then type ':wq!'
+
+
+More on Content-Negotiation :: refer https://www.javainuse.com/spring/spring-boot-content-negotiation
