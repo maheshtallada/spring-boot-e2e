@@ -28,3 +28,10 @@ click on 'esc' key and then type ':wq!'
 
 
 More on Content-Negotiation :: refer https://www.javainuse.com/spring/spring-boot-content-negotiation
+
+
+Default Swaggger UI url :: http://localhost:8080/swagger-ui.html OR http://localhost:8080/swagger-ui/index.html
+to re-direct to open api specification :: http://localhost:8080/v3/api-docs 
+(this link will be at left-top under "OpenAPI definition" heading
+Swagger specification was renamed to open api specification  when it was open-sourced in 2016, however name of swagger UI retained.
+
