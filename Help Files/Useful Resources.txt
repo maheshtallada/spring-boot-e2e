@@ -12,6 +12,7 @@ Ex: 1. we can type the following "users.iterator();"
 	3. the result is the below
 Iterator<User> iterator = users.iterator();
 
+Internationalization is also called i18n (because of the number of letters, 18, between “i” and “n”)
 
 Ctrl+Shift+O	-- organize imports
 Ctrl+O 			-- search for a method in the class
