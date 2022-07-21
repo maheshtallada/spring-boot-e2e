@@ -1,6 +1,6 @@
 package com.learning.springboot.springboote2e.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -13,8 +13,10 @@ import lombok.Setter;
 @Setter
 @Getter
 
-// static filtering - seond way
-@JsonIgnoreProperties(value = {"field1","field2"})
+@JsonFilter("SomeBeanFilter")
+
+// static filtering - second way
+//@JsonIgnoreProperties(value = {"field1","field2"})
 public class CustomBean {
 	
 	private String field1;
