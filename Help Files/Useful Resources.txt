@@ -42,3 +42,21 @@ Swagger specification was renamed to open api specification  when it was open-so
 By default only /actuator, /health and /health/{path} gets enabled. 
 To enable all endpoints, add this property
 management.endpoints.web.exposure.include=*
+
+--------------------------------------------------------------------------------------------------
+Need to go through the use of this and implement them
+what's the earlier way for these?  
+How is @PathVariable differed from @PathParam?  
+What was the alternative for @QueryParam?
+
+Mandatory:
+@PathParam  :: https://youtu.be/Fc-H0hDi73M
+@QueryParam :: https://youtu.be/KDdfyb2FsOk
+
+Optional:
+
+@MatrixParam	:: https://youtu.be/me4UQkc-7KM
+@FormParam		:: https://youtu.be/B0dC85YwPpg
+https://youtu.be/0kxae9K3Frs	- How to Download a file from a RESTful Web Service
+https://youtu.be/yr01OEk6FfM	- How to Upload a file to a RESTful Web Service
+--------------------------------------------------------------------------------------------------
