@@ -60,3 +60,9 @@ Optional:
 https://youtu.be/0kxae9K3Frs	- How to Download a file from a RESTful Web Service
 https://youtu.be/yr01OEk6FfM	- How to Upload a file to a RESTful Web Service
 --------------------------------------------------------------------------------------------------
+
+basic			-- default username is user and password is displayed in starter logs
+password digest
+oauth
+oauth2
+
