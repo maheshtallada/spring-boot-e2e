@@ -22,6 +22,8 @@ Ctrl+Shift+F	-- Format the Code
 Ctrl + T		-- To get Type Hierarchy of a class (toggle between supertype and subtype hierarchy)
 Ctrl+Shift+R	-- Open Resource (Class)
 Alt + (up)/(down)	--	place cursor on a particular line/block and click this Alt + U/D to move the code U/D
+Ctrl+Shift+/	-- Block comment for xml files
+		  +\	-- uncomment block
 
 
 Edit the commit message :: (tried and succeeded but before push, can explore after push)
@@ -66,3 +68,12 @@ password digest
 oauth
 oauth2
 
+-------------------------------
+dev tools
+
+Set 'spring.devtools.add-properties' to 'false' to disable
+-------------------------------
+
+Delete result is not idempotent -- doesn't give same result on multiple attempts of same request
+
+--------------------------------
