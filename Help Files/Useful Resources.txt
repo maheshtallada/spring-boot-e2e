@@ -48,7 +48,21 @@ management.endpoints.web.exposure.include=*
 --------------------------------------------------------------------------------------------------
 Need to go through the use of this and implement them
 what's the earlier way for these?  
+------------
 How is @PathVariable differed from @PathParam?  
+
+https://youtu.be/9yYLLN8cvMg
+
+For @PathVariable, in the code the url will be like /math/add/{num1}/{num2}  
+	-- and in the method arguments we need to add this annotation 
+		and then the name if the varibale name is different from pathvariale
+		
+@PathParam is basically used to retrieve queries in path, /math/add?num1=10&num2=5
+	-- and in the code, the url will be only --/math/add   
+		and the methd arguments will be same like pathvariable, just the diff annotation
+------------
+
+
 What was the alternative for @QueryParam?
 
 Mandatory:

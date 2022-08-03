@@ -24,19 +24,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.learning.springboot.springboote2e.customException.UserNotFoundException;
+import com.learning.springboot.springboote2e.model.Post;
 import com.learning.springboot.springboote2e.model.User;
+import com.learning.springboot.springboote2e.repository.PostRepository;
 import com.learning.springboot.springboote2e.repository.UserJpaRepository;
-import com.learning.springboot.springboote2e.repository.UserRepository;
 
 //@RequestMapping("/user")
 @RestController
 public class UserJpaController {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserJpaRepository userJpaRepository;
 	
 	@Autowired
-	private UserJpaRepository userJpaRepository;
+	private PostRepository postRepository;
 
 	/*
 	 * add this property if browser/output return date as timestamp
@@ -74,7 +75,7 @@ public class UserJpaController {
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
 		User savedUser = userJpaRepository.save(user);
 		
-		// ex. for builder patter
+		// ex. for builder pattern
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 		// the above gives current request's uri		
@@ -102,5 +103,38 @@ public class UserJpaController {
 	@DeleteMapping(path = "/jpa/user/{userId}")
 	public void deleteById(@PathVariable(name = "userId") int id) {
 		userJpaRepository.deleteById(id);
+	}
+	
+	@GetMapping("/jpa/users/{id}/posts")
+	public List<Post> retriveAllPosts(@PathVariable("id") int userid) {
+		
+		Optional<User> user = userJpaRepository.findById(userid);
+		
+		if(!user.isPresent()) 
+			throw new UserNotFoundException("id :: "+ userid);
+		
+		return user.get().getPosts();
+	}
+	
+	@PostMapping("/jpa/users/{id}/posts")
+	public ResponseEntity<Object> createPost(
+			@PathVariable("id") int userId,
+			@RequestBody Post post) {
+		
+		Optional<User> userOptional = userJpaRepository.findById(userId);
+		
+		if(!userOptional.isPresent()) 
+			throw new UserNotFoundException("id :: "+ userId);
+		
+		post.setUser(userOptional.get());
+		postRepository.save(post);
+		
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(post.getId())
+				.toUri();
+		
+		return ResponseEntity.created(uri).build();
+
 	}
 }
