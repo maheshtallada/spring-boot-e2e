@@ -1,0 +1,5 @@
+1. Difference between run-as-springboot app and run as java application ?
+2. OAuth2 authentication and authorization
+3. SQL concepts :: sequence, index, view and their working
+4. Eager loading and Lazy loading of beans
+5. Cascade types and caching(pri, sec), we used FetchType.LAZY in post class for user field -- learn more in it

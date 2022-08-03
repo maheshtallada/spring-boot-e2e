@@ -1,0 +1,8 @@
+Default Exception Handling:
+
+ResponseWhenExceptionThrownFromController.txt
+
+the content in above file shows the sample response when the exception raised from controller class is not handled.
+This is the default exception handling mechanism provided by SpringBoot
+
+which gives us status 500 (Internal Server Error)

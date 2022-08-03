@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/11803948/lombok-is-not-generating-getter-and-setter/45217235#45217235
