@@ -91,3 +91,6 @@ Set 'spring.devtools.add-properties' to 'false' to disable
 Delete result is not idempotent -- doesn't give same result on multiple attempts of same request
 
 --------------------------------
+--------------------------------------------------------------------------------------------------
+JPA Hibernate Debugging Guide: https://github.com/in28minutes/in28minutes-initiatives/blob/master/The-in28Minutes-TroubleshootingGuide-And-FAQ/jpa-and-hibernate.md#tables-are-not-created
+--------------------------------------------------------------------------------------------------
