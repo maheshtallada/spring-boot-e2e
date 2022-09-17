@@ -1,0 +1,96 @@
+1. Design Patterns
+	a. After Creating class with singleton pattern, how can we break that pattern and how to prevent breaking of such way. 
+2. SOLID principles
+
+----Basic----
+1. OOPS Concepts
+	Encapsulation: All attributes should be private and the set/get methods should be public. (Constructor usage is not involved in encapsulation)
+	Inheritance: To re-use all the characteristics of Parent. We can use Interface/Class for this. we use implements/extends 
+	respectively.   
+			Ex: In serice and Dao, mostly use have interfaces and their implementation classes.
+				Parent Class reference can hold child class object.
+	Polymorphism: Single(poly) method can have multiple (morph) implementations 
+				-- Overloading (Static -- compile time): same method name with different no. of arguments. Here also, implementation will be different, but definitely the no./type of arguments should be different
+				-- Over-riding (Dynamic -- run time) : method signature should be same, but different implementation in Parent and Child.
+						1. If the return type in interface method is of parent type, then you can return either parent/child type in implementation method.
+		Dynamic polymorphism: In DAO, we need service class, but we won't inject serviceImpl class, instead wee inject service interface. this is called run-time/dynamic polymorphism.
+	Abstraction: Hiding the implementation to the end-user, displaying only the method name to them.
+2. please take time and explore some problem statements reg Inheritance OR even entire OOPS
+3. Explain Exception Hierarchy in Inheritance.
+	If parent's method is throwing exception, its optional for child to throw or not.
+	But if child is throwing exception, definitely parent needs to throw the exception
+4. Parent - Child override scenario
+	1. let's say a method is available in both parent and child. -- in the driver class, the method exxecuted will be based on whose instance we created. (Parent ref can hold child instance but vice-versa is not possible)
+	2. Let's say the method is available only in parent, we didn't override in child. But we create child obj with parent ref, the method executed will be of parent without any comiplation error, that's where the inheritance concept lies. if the child has that property or behaviour, the driver uses it or else it takes from parent.
+	
+5. Can we over-ride static and private method ?
+	Ans: ************************NO*********************** -- as simple as that, both static and private are kindof personal things.
+		1. As private method visibility itself is confined to that particular class, we cannot override it.
+		2. for static -- the compilation error we get is -- "Method does not override methos from its superclass".
+			However, the child class can have a static method with same name as the static method from parent. only when we provide @override, the error comes.
+6. What is the difference of Java7 and Java8 interface ?
+	Java 7 -- we can only define abstract classes in interface.
+	Java 8 -- along with abstract (which only has definition), we can have default and static methods also, which have implementation 
+		purpose of default : 
+				1. is to not mandate implementation classes to override it. they'll have flexibility to override or not.
+				2. This will be helpful to add new method into interface, as all implementation classes need not implement it mandatorily like earlier in Java7. kind of Virtual extension, as the name of Default/Virtual Extension Method contains.
+		purpose of static : Utility methods can be made static. this is BETTER ALTERNATIVE to UTIL classes. 
+			Class is costly compared to interface. Basically, interfaces let the compiler know the expected behavior of the object.
+			
+	Java 8 Functional Interface : This should have only one abstract method. there is no restriction on no. of default and static methods., where as normal interface can have any no. of abstract methods. @FunctionalInterface annotation is optional
+	
+	6.1 : Is abstract keyword mandatory from Java8 ?
+		Ans : ***********NO**********. 
+			till Java7, as there are only abstract methods in Interface, it is optional. However its still optional in Java8 and above aswell. Because abstract methods won't have implementation, it can be differentiated from default and static methods of interface easily.
+	6.2 : Any Change in interface variables before and after Java8 ?
+		Ans : ***********NO**********. 
+			before adn after Java 8, all the variables are by default, PUBLIC STATIC and FINAL.
+	6.3 : Can we declare private methods in Interface in Java8 ?
+		Ans : ***********NO**********. 
+			It is available from Java 9 onwards.
+	6.4 :  normal Note: Classes CANNOT HAVE DEFAULT methods
+	6.5 : Object class' methods cannot be defined as default methods in interface as they're already available by default to all classes.
+	6.6 : IMPORTANT. How the Diamond access problem is solved in Java8 interfaces ?
+		
+		
+		Theory : 
+			Earlier in Java7, as only abstract methods are available, there is no problem in a class implementing multiple interfaces. Because, the class will implement it's own logic.
+			
+			Now, as Default methods are introduced in Java8 interfaces, a class implementing two interfaces which has same method in both of them, will have ambiguity (Diamond problem). like which implementation to take in implementation class (Child)
+			
+			Solution: The class should override that method and can
+				i.  provide it's own logic
+				ii. call either of the interface's method using <InterfaceName>.super.<methodName>();
+7. What is final, finally and finalize ?
+	final : keyword -- used on variables if you do not want them to be reassigned.
+	finally : block -- used for manual cleanup/close connections(through code) activity
+		-- used in try{} finally{} or try{} catch{} and then finally {}.
+	finalize : method -- when we call System.gc();  this method is called internally by JVM., only if some object is assigned to null.
+				-- Otherwise, finalize method won't be called. To understand it better ,we can override the finalize method which exists in Object class.
+				-- Here to override finalize method, wee don't need to extend it to Object class, as by default all classes are childs of Object class.
+8. What are equals and hashCode methods and their contract ?
+	hashcode method : to generate unique code through which we can differentiate objects and identify unique obj.
+	equals method : used to compare two objects based on their content.
+	
+	NOTE : Its not mandatory that if two Object's hashcode is same, their content is same and doesn't necesarily mean they are equal based on equals method.
+	
+	Contract: 
+			In the case, we do not override equals and hashcode, two objects with all fields containing equal values are also treated as different. to get demonstration, create a pojo without equals and hashcode, create a set and add two objects with different reference, but with equal values for all fields. and print the set to see two objects added into that.
+			
+			In order to avoid that, WE HAVE TO OVERRIDE BOTH EQUALS and HASHCODE methods and make sure their implementation is in such a way that, two equal object (based on equals method) should return same hashcode. and two unequal should return diff hashcode.
+			
+			refer : Hashmap_InternalWorking.docx in HelpFiles in jav8e2e project
+9. What is Exception and its Hierarchy ? -- refer ExceptionHierarchy.png in HelpFiles > Interview_Questions
+	try to rem as many exceptions as possible.
+10. Why Checked exceptions are also called as compile time exception, does it occur in compile time ?
+	Ans : *********NO**********
+	
+	Explanation : that is just a naming convention, however checked exception won't occur in compile time. all the exceptions are raised at run time only.
+	
+	Whatttt ?? Seriously ????
+	
+	Yes, even the checked exceptions occurs at run-time, however, compiler gives a warning to handle these exceptions. may be why they're called as compile time exceptions, not because they'll be raised during compile time.
+	
+	
+	Learn Deep on it.
+11. 

@@ -1,0 +1,29 @@
+findByProfession(String profession) -- where Profession = '<value>'
+countBy<Field> -- countByAge
+deleteByName
+
+-- we have to maintain camelCase here
+
+multiple columns
+---------------
+findByAgeAndProfession
+
+
+
+ignoreCase
+--------------
+findByProfessionIgnoreCase
+
+
+custom query
+------------
+we have to use only hql, native sql won't be supported.
+annotate method with @Query("Query>")
+
+Ex: 
+@Query("select u from User u")
+public List<User> getUsersCustomQuery();
+
+
+for update and delete ::
+@Modifying needs to be added upon @Query
