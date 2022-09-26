@@ -1,0 +1,228 @@
+Annotations:
+
+1. SpringBootApplication : Alias for below annotations.
+	-- EnableAutoConfiguration
+			This annotation helps us in auto configuring the application based on the jar dependencies that we have added in pom.xml
+	-- ComponentScan
+			It will scan the beans and help the IOC container to provide the beans
+	-- Configuration
+			to load the beans using java based configuration, this annotation is used.
+2. Stereotype annotations:
+	@Component --- base type
+	
+	below 3 are derived from the above. we can use above instead of all these three.
+	These are just for readability.
+	@Service
+	@Controller
+	@Repository
+	
+	@RestController --combination of @ResponseBody + @Controller
+	
+	These annotations are used to create spring beans in application context automatically
+	The componentScan will scan the classes with these annotations and will prepare beans. and manage its lifecycle from object creation to destroying
+3. Spring Core annotations :
+
+	1. @Configuration : This class can be used by Spring IOC container as source of bean definitions.
+	2. @Bean
+	
+	These above two annotations are used when we want to use java based configuration. i.e.., not xml based and not annotation based.
+	Here we won't annotate POJO with @Component. 
+	We define and return instances using methods with @Bean and retrieve using either @Autowired  OR using ApplicationContextClasses.
+	
+	3. @Autowired ::
+	
+			This is to inject beans/retrieve instances already created through one of 3 ways. i.e., Annotation/XML/Java based config., wherever we need the object of that class.
+			
+			plz refer how to retrive instances without using Autowired or before autowired is available.
+	4. @Qualifier :: this is used in addition to @Autowired
+	
+			Let's say the autowired item (say interface), has multiple implementation classes. then there will be ambiguity. To avoid that, we use @Qualifier("<Class name in camelCase/ bean name of the impl class.>")
+			
+			************Can refer "Autowired, Qualifier & Resource annotations.txt" for more. this is kind of harcoding. so need to use @Resource for dynamic setting of the required bean.
+	5. @Primary:
+			This is alternate way to say Spring to use this class to create a object ignoring ither impl classes.
+			we remove @Qualifier completely and add @Primary on the one of the impl class along with @Service/@Repository
+			
+			Please refer Spring Boot with Multiple datasources configuration. (Java techie has it)
+		
+	6. @Lazy:
+			upto now, the way of loading beans is called eager loading, as the Spring created beans(any of three ways) at the start of the applicatioin, irrespective of whether we use it. This increases heap memory.
+			
+			@Lazy helps in avoiding eager loading. and only creates the instance, when we try to call some method of it/access some static variables.
+			
+			How to use: 
+					1. add @Lazy in addition to @Component/any stereo type annotations. -- for the classes we need an instance.
+						1.1 please note that @Componentneed not be added always as this is just one way, if we use xml/java based, jsut @Lazy is sufficient.
+					2. Accessing it is same as the way for eager loading, i.e., through Autowired or any other means of accessing.
+					 
+	7. @Value: we don't need to mention the name of the file anywhere in the code while accessing., as we are loading from application.properties file
+	
+		When we want to load some data from properties file, we can use @Value annotation.
+		
+		usage:  add blow property in application.properties
+		my.name=Spring Boot Application
+		
+		
+		@Value("${my.name}")
+		private String myName;
+		
+
+	8. @PropertySource ::
+		
+		1. Now, we might have a question, How to use properties from custom file. ??
+		2. we have to add @PropertySource("classpath:custom.properties") to the class in which we want to access the properties of the custom properties file.
+		3. as we mentioned classpath, we need to place the file in the same folder as our application.properties resides i.e., in src/main/resources
+		4. Accessing of thee properties can be done by @Value same as above.
+		
+	9. @ConfigurationProperties
+	
+		1. This is quite interesting and imiportant.
+		2. This is used when we want to map a group of properties from properties file to fields in a POJO.
+			let's say we need to group these properties to pojo
+			primary.db.driverUrl=
+			primary.db.username=
+			primary.db.password=
+			
+		3. we have to add this annotation to that POJO. here prefix is the common to all the properties in that group.
+			@ConfigurationProperties(prefix="primary.db")
+			
+		4. And then the names of the fields should be the unique word to the property. i.e., driverUrl, username and password.
+			private String driverUrl;
+			private String username;
+			private String password;
+			
+		5. Annotate props pojo with @Component and use it wherever required using @Autowired.
+	10. @Profile
+		
+		1. We use this when we want to load configuration specific to environment. (Dev/QA/Prod/any custom)
+		2. Ex: Database connection related properties will be env specific, here we can go for profiles.
+		3. We can create n no. of props files by naming as
+			application-<env>.properties
+			
+			ex: application-dev.properties, application-prod.properties
+		4. Now, the question is how to tell spring to access particular props file
+			add @Profile("dev") in the Application class where @SprigBootApplication is used OR in the configuration class in Spring Core applications.
+			ALSO
+			add this property
+			spring.profiles.active=dev
+		5. whenever we need to switch, we need to change profile in these two places.
+		6. but this is hard-coding, the main point of flexibility is gone. For this, need to know how to alter values of properties file keys without making changes in the application.properties
+			one way is to give values in cli by using 2 hyphens.
+			
+			java -jar <appName> --key1=value2 --key2=value2
+	11. @Scope 
+
+		1. Various scopes of bean are :: singleton, prototype, session, request and global-session
+		2. To mention the scope of the bean, we can use @Scope annotation.
+		3. use @Scope("singleton") on the class for which you need a bean with singleton scope.
+		4. Accessing of it is asusual through @Autowired
+		
+		singleton 		: only one object is created per Spring IOC Container.
+		proptotype		: how many times we try to access the bean, those many times the instance is created.
+		session 		: This scopes a bean definition to an http SESSION. Only valid in the context of a web-aware Spring ApplicationContext.
+		request 		: This scopes a bean definition to an http REQUEST. Only valid in the context of a web-aware Spring ApplicationContext.
+		global-session 	: This scopes a bean definition to a global HTTP session. Only valid in the context of a web-aware Spring   ApplicationContext.
+		
+		
+4. REST API related Annotations:
+	1. @RestController :
+			@ResponseBody + @Controller
+			This says that this is the class which has rest end points.
+			
+	2. @RequestMapping :
+		1. class level : using this annotation, we can mention the part of the url ex: /booking -- all the booking requests are in this class.
+		
+			@Requestmapping("/booking")
+			public class Booking {}
+		2. method level : same as class level, we can mention the remaining url aswell as the type of the REST.
+			@Requestmapping("/booking/create", method="RequestMethod.POST")
+		3. also, we can mentione produces and consumes here.
+			@Requestmapping("/booking/create", method="RequestMethod.POST", produces="application/json", consumes="application/xml")
+	3. @GetMapping/@PostMapping/@DeleteMapping/@PutMapping 
+	
+		--- these are specific annotation for specific methods inherited from @RequestMapping. method attribute is not required anyore.
+		--- pUt -- Update
+		--- post -- create
+	4. @RequestBody -- deserialised the json to pojo.
+		
+		to recieve the json sent in the request in the form of a pojo, we need to use @RequestBody.
+		
+		How is it able to map the keys in json to the fields in the pojo ?
+			1. if the key names are same, then it maps automatically.
+			2. If they are different, we need to use 
+			
+	@JsonProperty("FirstName") 
+	private Stirng firstName;  
+			
+			to map FirstName from json to firstName in POJO.
+			
+	PLEASE REFER THIS FOR FEW JSON SPECIFIC ANNOTATIONS -- https://dzone.com/articles/jackson-annotations-for-json-part-4-general
+	
+	5. @PathVariable -- we'll pass values as part of the url like  https://google.com/user/4 -- 
+					-- in this case ,the value is mandatory to be passed
+	6. @RequestParam -- we'll pass key and value here like https://google.com/user?id=4&rollNo=353
+					-- in this case ,the key value is optional to be passed.
+					-- & is used to differentiate the key values.
+			1. RequestBody is used to retrieve the payload sent from client.
+			2. And @PathVariable nd @RequestParam annotations are used to retrive the data passed from the url itself
+			
+	7. @ControllerAdvice & @ExceptionHandler
+		
+		1. All the exception raised from DAO to service will have to be dealt in @Controller. What if there is exception in controller class itself. ??
+		2. Then Spring searches for class with @ControllerAdvice OR @RestControllerAdvice (ControllerAdvice + ResponseBody) which has methods specific to the type of the Exception
+		
+			we need to define multiple methods annotated with @ExceptionHandler("ClassNotFoundException.class") and define a proper response type and message.
+			Usually the return type of these methods will be of ResponseEntity<T> type. Here the T class will have custom properties to show it to user.
+
+5. Spring Data JPA related annotations: 
+	
+	1. @Entity
+		Map the POJO class to a Table in Database.
+	2. @Table : to customise the class name to give name other than table name.
+		If the class name is different when compared to the table name, we use this @Table("<table name>")
+	3. @Column
+		If the field/variable name in POJO is different when compared to the column name, we use this @Column("<table name>")
+	4. @Transactional
+		we can use this in cases like, if something is broken, we need to rollback all the steps for the method which we annotated with @Transactional.
+		-- isolation and propagation are two attributes for this annotation.
+		-- learn more on this.
+	5. Relationships:
+		1. @OnetoOne
+		2. @OnetoMany
+		3. @ManytoOne
+		4. @manytoMany
+		
+		we have some values for this annoatations, where we specify if parent is saved, all the child to be saved, if parent is deleted, all the child needs to be deleted. Explore on that
+	
+	6. @GeneratedValue -- default generator of the id
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
