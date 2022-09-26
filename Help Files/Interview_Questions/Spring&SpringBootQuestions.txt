@@ -192,7 +192,7 @@ Annotations:
 		3. @ManytoOne
 		4. @manytoMany
 		
-		we have some values for this annoatations, where we specify if parent is saved, all the child to be saved, if parent is deleted, all the child needs to be deleted. like fetchtype.ALL or fetchType.CREATE but its not fetchtype. its someother enum Explore on that
+		learn about FetchType and Cascading types.
 	
 	6. @GeneratedValue -- default generator of the id
 	
