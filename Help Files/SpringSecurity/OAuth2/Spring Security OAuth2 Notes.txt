@@ -1,0 +1,63 @@
+Req Dependencies : 
+
+1. Cloud Security
+2. Cloud OAuth2
+3. Spring web starter
+
+
+additional annotation :
+@EnableOAuth2Sso
+
+
+in any end point, to get the user details, add Principal as parameter. (java.security.Principal)
+principal.getName() gives us the user name.
+
+
+-----------------------------------------------------------------
+
+
+1. Go to Developer settings in github (right top -> Profile drop down -> settings -> Developer Settings)
+2. Select OAuth Apps -> Click on register a new application.
+3. Give required details and note the client id and client secret. and replace the below with actual values
+------------------------------------------------------------------
+
+  oauth2:
+    client:
+       clientId: 074d166086f317ed4ec9
+       clientSecret: c50ca06ec6d44120cfd19afeccf7005fe86bcc72
+       accessTokenUri: https://github.com/login/oauth/access_token
+       userAuthorizationUri: https://github.com/login/oauth/authorize
+       clientAuthenticationScheme: form
+    resource:
+      user-info-uri: https://api.github.com/user
+      prefer-token-info: false 
+------------------------------------------------------------------
+
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
+
+Internal working of OAuth2 ::
+
+1. OAuth 2 is an authorization framework that enables applications — such as Facebook, GitHub, and DigitalOcean — to obtain limited access to user accounts on an HTTP service. 
+2. It works by delegating user authentication to the service that hosts a user account and authorizing third-party applications to access that user account. OAuth 2 provides authorization flows for web and desktop applications, as well as mobile devices.
+------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
