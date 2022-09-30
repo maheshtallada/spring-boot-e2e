@@ -63,7 +63,7 @@ For @PathVariable, in the code the url will be like /math/add/{num1}/{num2}
 ------------
 
 
-What was the alternative for @QueryParam?
+What was the alternative for @QueryParam?  -- and:RequestParam
 
 Mandatory:
 @PathParam  :: https://youtu.be/Fc-H0hDi73M

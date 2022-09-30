@@ -34,6 +34,7 @@ public class Controller {
 	}
 
 	// internationalization - i18N
+	// this doesn't need any dependency, either use the RequestHeader annotation or use the ContextHolder.
 	@GetMapping(path = "/welcome/i18n")
 	public String sendGreetingInternationalization(
 			//@RequestHeader(name = "Accept-Language", required=false) Locale locale

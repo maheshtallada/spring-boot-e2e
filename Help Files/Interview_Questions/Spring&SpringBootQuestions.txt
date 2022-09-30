@@ -55,11 +55,12 @@ Annotations:
 						1.1 please note that @Componentneed not be added always as this is just one way, if we use xml/java based, jsut @Lazy is sufficient.
 					2. Accessing it is same as the way for eager loading, i.e., through Autowired or any other means of accessing.
 					 
-	7. @Value: we don't need to mention the name of the file anywhere in the code while accessing., as we are loading from application.properties file
+	7. @Value: 
 	
 		When we want to load some data from properties file, we can use @Value annotation.
+		we don't need to mention the name of the file anywhere in the code while accessing., as we are loading from application.properties file
 		
-		usage:  add blow property in application.properties
+		usage:  add below property in application.properties
 		my.name=Spring Boot Application
 		
 		
@@ -173,6 +174,15 @@ Annotations:
 		
 			we need to define multiple methods annotated with @ExceptionHandler("ClassNotFoundException.class") and define a proper response type and message.
 			Usually the return type of these methods will be of ResponseEntity<T> type. Here the T class will have custom properties to show it to user.
+	8. @RequestHeader :: https://www.baeldung.com/spring-rest-http-headers
+		1. we can use to retrieve specific header, but if it isn't passed, we'll get an error 400 Bad Request.
+		2. or we can use on Map, MultiValueMap or HttpHeaders object.
+		
+	9. @ResponseStatus : 
+		Marks a method or exception class with the status code and reason that should be returned. 
+
+		The status code is applied to the HTTP response when the handlermethod is invoked and overrides status information set by other means,like ResponseEntity or "redirect:". 
+
 
 5. Spring Data JPA related annotations: 
 	
