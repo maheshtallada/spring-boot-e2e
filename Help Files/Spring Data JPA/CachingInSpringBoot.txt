@@ -1,0 +1,1 @@
+https://www.geeksforgeeks.org/spring-boot-caching/#:~:text=If%20we%20want%20to%20enable,caching%20and%20configures%20a%20CacheManager.

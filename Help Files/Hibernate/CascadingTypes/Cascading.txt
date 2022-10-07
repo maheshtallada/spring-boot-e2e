@@ -1,0 +1,15 @@
+What is Cascading?
+Entity relationships often depend on the existence of another entity, for example the Person–Address relationship. Without the Person, the Address entity doesn't have any meaning of its own. When we delete the Person entity, our Address entity should also get deleted.
+
+Cascading is the way to achieve this. When we perform some action on the target entity, the same action will be applied to the associated entity.
+
+Syntax : @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+
+CascadeType.ALL -- means whatever the action is done on an entity, the same action is performed on the associated entity.
+
+What happens if we do not use Cascading ?
+	Solution: Its not like using or not using is better/correct. It depends on the requirement and safety. generally we won't go for Delete type of Cascade.
+
+Note : There is no link between FetchType and CascadeType. 
+		According to the requirement, we can use them, fetch types are used only while fetching, mostly select queries. 
+		whereas the cascading is used for save, delete, merge, lock , etc., which has changes in Database.

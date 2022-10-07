@@ -1,0 +1,2 @@
+@EnableTransactionManagement on main class with main method and
+@Transactional on the respective method where we want to perform transaction, which uses multiple databases.

@@ -1,0 +1,14 @@
+https://www.baeldung.com/hibernate-lazy-eager-loading
+
+
+Fetch Types are used when we are using relations among the tables like @OneToMany.
+
+fetch type is an attribute of the above annotation. 
+Syntax:  @ManyToOne(fetch = FetchType.LAZY)
+
+
+So the fetch type specifies when to load the related object. LAZY tells to load the related object's data only when it(particular getter) is called by making a DB call via some proxy.
+
+And when we use EAGER, all the related object's data is loaded when the initial DB call happened itself. if we keep show_sql=true, we can see the firing of queries
+
+refer the word doc.

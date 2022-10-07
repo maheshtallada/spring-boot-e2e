@@ -1,0 +1,8 @@
+save:
+	Save method is used to store an object into the database. It insert an entry if the identifier doesn’t exist. It will throw error if the identifier already exist. We'll get NonUniqueObjectException
+	
+update:
+	Update method in the hibernate is used for updating the object using identifier. It will throw an exception if the identifier is missing or doesn’t exist.
+	
+saveOrUpdate:
+	The saveOrUpdate method calls save() or update() method based on the operation. If the identifier exists, it will call update method else the save method will be called.
