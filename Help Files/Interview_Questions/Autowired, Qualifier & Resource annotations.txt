@@ -22,3 +22,14 @@
 		@Resource(name="${beanName}")
 		
 		-- So, it is the combination of @Autowired and @Qualifier and dynamic usage
+		
+
+@Inject : 
+	1. @Inject annotation is same as @Autowired annotation – a way of telling Spring framework to find out dependencies of the bean, instead of you mentioning it explicitly
+	2. But if both annotations do the same thing, then why we need 2 annotations for same kind of functionality 🤔 ?
+		👉 @Autowired annotation is the one specific to Spring framework.
+		👉 But @Inject is an standard annotation based on JSR-330 annotation collections.
+		👉 In a nutshell, JSR-330 defines a standard set of annotations for dependency injection.
+		👉 If any dependency injection framework like Spring, wants to comply with the standard, they have to support these standard annotations.
+	3. ✅ So, if you use @Inject annotation in place of @Autowired, you are making your application portable from Spring framework to any other standard dependency injection framework like Google Guice 😊.
+	4.So, does this mean that you should always use @Inject annotation ? 😳 If there is a possibility of changing DI framework from Spring to something else which also supports JSR-330 standard, then it would better to use standard JSR-330 annotations so that there would be minimal changes while migrating.
