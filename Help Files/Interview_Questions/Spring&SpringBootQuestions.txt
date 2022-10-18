@@ -206,9 +206,10 @@ Annotations:
 	
 	6. @GeneratedValue -- default generator of the id
 	
-	
-	
-	
+6. Consuming Rest APIs: 
+	-- define a bean which returns new RestTemplate() 
+	-- autowire it where we need to consume external API
+	-- use template.getforObject, etc methods which takes url, return type.class and other paramters respectively
 	
 	
 	

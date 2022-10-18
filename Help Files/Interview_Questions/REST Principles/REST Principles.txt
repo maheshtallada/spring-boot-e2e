@@ -1,0 +1,14 @@
+https://restfulapi.net/
+
+
+
+Uniform Interface
+	Identification of resources
+	Manipulation of resources through representations
+	Self-descriptive messages
+	Hypermedia as the engine of application state HATEOAS
+Client-Server
+Stateless
+Cacheable
+Layered System
+Code on Demand (Optional)
