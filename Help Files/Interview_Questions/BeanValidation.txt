@@ -1,0 +1,50 @@
+Bean Validation API
+The Bean Validation API is a Java specification which is used to apply constraints on object model via annotations. Here, we can validate a length, number, regular expression, etc. Apart from that, we can also provide custom validations.
+
+@Valid is used along with @RequestBody in the controller, i.e, service definition.
+
+When Spring Boot finds an argument annotated with @Valid, it automatically bootstraps the default JSR 380 implementation — Hibernate Validator — and validates the argument.
+
+When the target argument fails to pass the validation, Spring Boot throws a MethodArgumentNotValidException exception.
+
+
+@NotNull	It determines that the value can't be null.
+@Min		It determines that the number must be equal or greater than the specified value.
+			has attribute -- value 
+			@Min(value = 18, message = "Age should not be less than 18")
+@Max		It determines that the number must be equal or less than the specified value.
+@Size		validates that the annotated property value has a size between the attributes min and max; can be applied to String, Collection, Map, and array properties.
+			has attributes -- min, max
+@Pattern	It determines that the sequence follows the specified regular expression.
+@NotBlank
+@Email		validates that the annotated property is a valid email address.
+@AssertTrue	validates that the annotated property value is true.   -- for boolean variables
+
+
+
+All the above validations can have message attribute.
+
+
+We can use below dependency, however javax package independent of this dependency also provides these annotations.
+
+<dependency> 
+    <groupId>org.springframework.boot</groupId> 
+    <artifactId>spring-boot-starter-validation</artifactId> 
+</dependency>
+
+
+@NotBlank(message = "Name is mandatory")
+private String name;
+
+
+And some additional annotations that can be found in the JSR:
+
+@NotEmpty 			validates that the property is not null or empty; can be applied to String, Collection, Map or Array values.
+@NotBlank 			can be applied only to text values and validates that the property is not null or whitespace.
+@Positive and @PositiveOrZero 		apply to numeric values and validate that they are strictly positive, or positive including 0.
+@Negative and @NegativeOrZero 		apply to numeric values and validate that they are strictly negative, or negative including 0.
+@Past and @PastOrPresent 			validate that a date value is in the past or the past including the present; can be applied to date types including those added in Java 8.
+@Future and @FutureOrPresent validate that a date value is in the future, or in the future including the present.
+
+
+There can be custom validation programatically also!
