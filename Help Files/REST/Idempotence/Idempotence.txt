@@ -1,0 +1,4 @@
+If we follow the REST principles in designing our APIs, we will have automatically idempotent REST APIs for GET, PUT, DELETE, HEAD, OPTIONS, and TRACE methods. Only POST APIs will not be idempotent.
+
+1. POST is NOT idempotent.
+2. GET, PUT, DELETE, HEAD, OPTIONS and TRACE are idempotent.
