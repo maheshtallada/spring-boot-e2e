@@ -4,7 +4,7 @@
 	
 	However, if multiple classes implements same interface, then comes the ambiguity error (run time).
 
-@Qualifier -- in addition to @Autowired, if we use @Qualifier("<name of the bean class in camel case>")
+@Qualifier -- in addition to @Autowired, if we use @Qualifier("<name of the bean class in camel case>"), that problem is solved!
 
 	ex: if the implementation class name is PhonePe -- then the above name should be 'phonePe'
 	

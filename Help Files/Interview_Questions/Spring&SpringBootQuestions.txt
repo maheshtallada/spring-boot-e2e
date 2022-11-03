@@ -209,16 +209,19 @@ Annotations:
 6. Consuming Rest APIs: 
 	-- define a bean which returns new RestTemplate() 
 	-- autowire it where we need to consume external API
-	-- use template.getforObject, etc methods which takes url, return type.class and other paramters respectively
+	-- use template.getforObject, etc methods which takes url, return type.class and other paramters respectively	
 	
+7. Can we connect multiple databases to single SpringBoot Application ?	
 	
+	https://www.baeldung.com/spring-data-jpa-multiple-databases#:~:text=Multiple%20Databases%20in%20Spring%20Boot&text=The%20interesting%20part%20is%20annotating,take%20care%20of%20the%20rest.
 	
+	If yes, how do we code in the repository class, so that we can communicate with multiple databases ?
+8. Implementation of Cache --
+	in how many layers can we implement cache ?
+	cache with regards to DB hitting ?
+	rest calls caching ?
 	
-	
-	
-	
-	
-	
+9. Can we have multiple parent tags in pom.xml ? Justify.
 	
 	
 	

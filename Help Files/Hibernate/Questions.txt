@@ -1,0 +1,5 @@
+1. BenefitsOverJDBC   --  https://www.baeldung.com/hibernate-exceptions
+2. More on @GeneratedValue ::
+3. Lazy loading in Hibernate ?
+4. Types of locks 
+	-- OptimisticLocking
