@@ -222,8 +222,8 @@ Annotations:
 	rest calls caching ?
 	
 9. Can we have multiple parent tags in pom.xml ? Justify.
-	
-	
+10. What is @Primary annotation ?
+
 	
 	
 	

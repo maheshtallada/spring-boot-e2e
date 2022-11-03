@@ -1,4 +1,4 @@
-Bean Validation API
+Bean Validation API OR Input Validation
 The Bean Validation API is a Java specification which is used to apply constraints on object model via annotations. Here, we can validate a length, number, regular expression, etc. Apart from that, we can also provide custom validations.
 
 @Valid is used along with @RequestBody in the controller, i.e, service definition.

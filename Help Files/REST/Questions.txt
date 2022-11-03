@@ -7,3 +7,7 @@
 	we do pass auth code from postman/any client, then how is it retrived in code like we retrieve headers and queries through @PathParam etc.,
 	
 	Ans: 
+3. How to consume secure Restful webservices ? i.e., how can we pass authorisation code while calling 3rd party services.
+	
+	Ans:
+4.
