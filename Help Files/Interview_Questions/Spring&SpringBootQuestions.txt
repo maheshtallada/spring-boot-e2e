@@ -223,10 +223,11 @@ Annotations:
 	
 9. Can we have multiple parent tags in pom.xml ? Justify.
 10. What is @Primary annotation ?
-
-	
-	
-	
+	-- Indicates that a bean should be given preference when multiple candidates are qualified to autowire a single-valued dependency. If exactly one 'primary' bean exists among the candidates, it will be the autowired value.
+11. On which Desingpattern SpringBoot works ?
+	-- Creational
+12. If we replace @Controller, @Service, @Repository with @Component, will it have any impact? 
+	-- NO, not just for Service and Repository, even for Controller, there won't be any difference.
 	
 	
 	

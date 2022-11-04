@@ -1,7 +1,9 @@
 1. How do we handle concurrent access of the application ? What are the exceptions involved ?
 	Ex: same action is being performed on same resource concurrently by multiple users ?
 
-	Ans: 
+	Ans: https://medium.com/swlh/handling-concurrent-requests-in-a-restful-api-5a25a4b81a1 
+		-- pessimistic locking and optimistic locking.
+		-- prefer pessimistic locking.
 	
 2. How do we fetch the authorisation code in REST API ?  
 	we do pass auth code from postman/any client, then how is it retrived in code like we retrieve headers and queries through @PathParam etc.,
