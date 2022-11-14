@@ -1,4 +1,4 @@
 13. What is the principle that Spring follows ?
 	Ans : Spring Framework is based on two design principles - Dependency Injection and Aspect Oriented Programming
 14. What does Dispatcher Servlet do?
-	
+15. How do we ensure that two triggers doesn't process the same data, be it of SFTP or Message Queues.

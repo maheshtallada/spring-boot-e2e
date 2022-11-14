@@ -4,3 +4,78 @@
 4. Types of locks 
 	-- OptimisticLocking
 5. What are various Interfaces in Hibernate ?
+6. How do we join tables in Hibernate apart from the writing query.
+	-- using @JoinTable and @JoinColumn annotations.
+	-- Ex: 
+		@ManyToOne
+		@JoinTable(name="events", joinColumns = @JoinColumn(name="category_i"))
+		private Events events;
+7. What is @Temporal ?
+8. Example of Hibernate method ?
+
+	public List<Category> getCategoryList(int id) {
+		List<Category> groupList;
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("select c from Category c join fetch c.events where c.parentCategory.categoryId = 1");
+		//query.setParameter("id", id);
+		groupList = query.list();
+		return groupList;
+	}
+	
+9. Example of hbm.xml and hibernate.properties
+	
+	https://www.javatpoint.com/hibernate-configuration
+
+	-----------------------------------------xml--------------------------------
+	<?xml version="1.0" encoding="UTF-8"?>    
+	<!DOCTYPE hibernate-configuration PUBLIC    
+			"-//Hibernate/Hibernate Configuration DTD 5.3//EN"    
+			"http://www.hibernate.org/dtd/hibernate-configuration-5.3.dtd">    
+	<hibernate-configuration>    
+		<session-factory>    
+				  
+		<property name="hbm2ddl.auto">update</property>      
+			<property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>      
+			<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>      
+			<property name="connection.username">system</property>      
+			<property name="connection.password">jtp</property>      
+			<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>     
+			 
+		</session-factory>    
+	</hibernate-configuration>  
+	
+	-----------------------------------------properties-----------------------------------------
+	hibernate.dialect= org.hibernate.dialect.Oracle9Dialect  
+	hibernate.connection.driver_class= oracle.jdbc.driver.OracleDriver  
+	hibernate.connection.url= jdbc:oracle:thin:@localhost:1521:xe  
+	hibernate.connection.username= system  
+	hibernate.connection.password=jtp  
+	hibernate.show_sql=true    
+	hibernate.hbm2ddl=update	
+	----------------------------------------------------------------------------------
+
+10. How do we configure Session and other configuration required to hit a query in Hibernate ?
+	https://www.javatpoint.com/hibernate-configuration
+	
+	Ans: 
+		1. session comes from sessionFactory  
+			Session session = sessionFactory.getCurrentSession();
+		2. SessionFactory sessionFactory = conf.configure().buildSessionFactory();
+		3. Configuration conf = new Configuration().addResource("employee.hbm.xml")  
+		4. hbm.xml is shown above.
+		
+		
+		Another example :
+		
+			public void testConnection() throws Exception {
+
+				logger.info("Trying to create a test connection with the database.");
+				Configuration configuration = new Configuration();
+				configuration.configure("hibernate_sp.cfg.xml");
+				StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+				SessionFactory sessionFactory = configuration.buildSessionFactory(ssrb.build());
+				Session session = sessionFactory.openSession();
+				logger.info("Test connection with the database created successfuly.");
+			}
+
+11. 
