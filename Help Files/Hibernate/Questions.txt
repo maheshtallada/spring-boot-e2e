@@ -78,4 +78,6 @@
 				logger.info("Test connection with the database created successfuly.");
 			}
 
-11. 
+11. n+1 subquery problem while using the fetch type lazy
+		for the object of main class-- for each retrieval of the associated class, we'll be hitting database as it's a lazy fetch type -- how can we solve this ?
+12. 
